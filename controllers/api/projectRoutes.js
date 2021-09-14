@@ -1,10 +1,10 @@
 const router = require('express').Router();
-const { blog } = require('../../models');
+const { Project } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.post('/', withAuth, async (req, res) => {
   try {
-    const newblog = await Project.create({
+    const newproject = await Project.create({
       ...req.body,
       user_id: req.session.user_id,
     });
@@ -24,12 +24,12 @@ router.delete('/:id', withAuth, async (req, res) => {
       },
     });
 
-    if (!blogData) {
-      res.status(404).json({ message: 'No blog found with this id!' });
+    if (!projectData) {
+      res.status(404).json({ message: 'No project found with this id!' });
       return;
     }
 
-    res.status(200).json(blogData);
+    res.status(200).json(projectData);
   } catch (err) {
     res.status(500).json(err);
   }
