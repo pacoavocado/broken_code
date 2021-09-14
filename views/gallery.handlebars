@@ -1,9 +1,11 @@
 <div class="text-center">
   <h2>Gallery</h2>
+  {{#each slides as |slide|}}
  <div class="main-gallery">
-  <div class="gallery-cell">...</div>
-  <div class="gallery-cell">...</div>
-  <div class="gallery-cell">...</div>
-  
+  <div class="gallery-cell">
+  <img src="{{source}}" alt="{{name}}" /> 
+  <span class = "imgDesc">{{description}}</span>
+  </div>
+{{/each}}  
 </div>
-<script src="/path/to/flickity.pkgd.min.js"></script>
+<script src="./js/gallery.js"></script>
