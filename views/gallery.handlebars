@@ -1,10 +1,12 @@
 <div class="text-center">
   <h2>Gallery</h2>
   {{#each slides as |slide|}}
- <div class="main-gallery">
-  <div class="gallery-cell">
-  <img src="{{source}}" alt="{{name}}" /> 
-  <span class = "imgDesc">{{description}}</span>
+   <div class="carousel js-flickity">
+        <!-- images from unsplash.com -->
+        <div class="carousel-cell">
+          <img src="{{source}}" alt="{{name}}" />
+          <span class = "imgDesc">{{description}}</span>
+        </div>
   </div>
 {{/each}}  
 </div>
