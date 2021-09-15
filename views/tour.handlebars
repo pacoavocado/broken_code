@@ -1,5 +1,13 @@
 <div class="text-center">
-  <h2>tour</h2>
- 
-
+  <h2>HI</h2>
+ {{#each tours as |tour|}}
+  <div class="bio-cell">
+  <h2>{{name}}</h2> 
+  <p> {{release_date}}</p>
+  <p>{{description}}</p>
+  </div>
+{{/each}}  
+ <aside class="tourPic" >
+   <img src ="../public/assets" alt = "brandImg">
+ </aside>
 </div>
