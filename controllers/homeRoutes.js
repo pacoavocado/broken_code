@@ -5,7 +5,7 @@ const withAuth = require('../utils/auth');
 router.get('/', async (req, res) => {
   try {
     // Get all projects and JOIN with user data
-    const projectData = await Project.findAll({
+    const tourData = await Project.findAll({
       include: [
         {
           model: User,
@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
     });
 
     // Serialize data so the template can read it
-    const projects = projectData.map((project) => project.get({ plain: true }));
+    const projects = tourData.map((project) => project.get({ plain: true }));
 
     // Pass serialized data and session flag into template
     res.render('homepage', { 
@@ -29,7 +29,7 @@ router.get('/', async (req, res) => {
 
 router.get('/project/:id', async (req, res) => {
   try {
-    const projectData = await Project.findByPk(req.params.id, {
+    const tourData = await Project.findByPk(req.params.id, {
       include: [
         {
           model: User,
@@ -38,7 +38,7 @@ router.get('/project/:id', async (req, res) => {
       ],
     });
 
-    const project = projectData.get({ plain: true });
+    const project = tourData.get({ plain: true });
 
     res.render('project', {
       ...project,
@@ -81,41 +81,39 @@ router.get('/login', (req, res) => {
 
 router.get('/discography', (req, res) => {
   // If the user is already logged in, redirect the request to another route
-  if (req.session.logged_in) {
-    res.redirect('/');
-    return;
-  }
+  // if (req.session.logged_in) {
+  //   res.redirect('/');
+  //   return;
+  // }
 
   res.render('discography');
 });
 
-router.get('/bio', (req, res) => {
+router.get('/tour', (req, res) => {
   // If the user is already logged in, redirect the request to another route
-  if (req.session.logged_in) {
-    res.redirect('/');
-    return;
-  }
+  // if (req.session.logged_in) {
+  //   res.redirect('/');
+  //   return;
+  // }
 
-  res.render('bio');
+  res.render('tour');
 });
+
 router.get('/gallery', (req, res) => {
   // If the user is already logged in, redirect the request to another route
-  if (req.session.logged_in) {
-    res.redirect('/');
-    return;
-  }
+
 
   res.render('gallery');
 });
 
-router.get('/login', (req, res) => {
+router.get('/faq', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
-    res.redirect('/profile');
+    res.redirect('/');
     return;
   }
 
-  res.render('login');
+  res.render('faq');
 });
 
 router.get('/signup', (req, res) => {
