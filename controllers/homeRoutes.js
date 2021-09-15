@@ -81,27 +81,40 @@ router.get('/login', (req, res) => {
 
 router.get('/discography', (req, res) => {
   // If the user is already logged in, redirect the request to another route
-  // if (req.session.logged_in) {
-  //   res.redirect('/');
-  //   return;
-  // }
+  if (req.session.logged_in) {
+    res.redirect('/');
+    return;
+  }
 
   res.render('discography');
 });
 
 router.get('/tour', (req, res) => {
   // If the user is already logged in, redirect the request to another route
-  // if (req.session.logged_in) {
-  //   res.redirect('/');
-  //   return;
-  // }
+  if (req.session.logged_in) {
+    res.redirect('/');
+    return;
+  }
 
   res.render('tour');
 });
 
+router.get('/tourinput', (req, res) => {
+  // If the user is already logged in, redirect the request to another route
+  if (req.session.logged_in) {
+    res.redirect('/');
+    return;
+  }
+
+  res.render('tourinput');
+});
+
 router.get('/gallery', (req, res) => {
   // If the user is already logged in, redirect the request to another route
-
+  if (req.session.logged_in) {
+    res.redirect('/');
+    return;
+  }
 
   res.render('gallery');
 });
