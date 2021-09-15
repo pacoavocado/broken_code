@@ -16,13 +16,13 @@
       <nav>
       <h1>
         <a href="/">Band page</a>
+        <a href="/gallery">gallery</a>
+        <a href="/discography">discography</a>
+        <a href="/tour">tour</a>
+        <a href="/faq">faq</a>
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
         <a href="/profile">profile</a> 
-        <a href="/gallery">gallery</a>
-        <a href="/discography">discography</a>
-        <a href="/bio">bio</a>
-        <a href="/faq">faq</a>
         <button class="no-button" id="logout"><a>logout</a></button>
         {{else}}
         <a href="/login">login</a>
