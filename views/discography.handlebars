@@ -1,5 +1,14 @@
 <div class="text-center">
   <h2>HI</h2>
- 
+ {{#each dicos as |disco|}}
+ <aside class="discoPic" >
+   <img src ="{{source}}" alt = "{{name}}">
+ </aside>
+  <div class="bio-cell">
+  <h2>{{name}}</h2> 
+  <p>This album was released on: {{release_date}}</p>
+  <p>{{description}}</p>
+  </div>
+{{/each}}  
 
 </div>
