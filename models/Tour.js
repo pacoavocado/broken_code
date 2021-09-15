@@ -16,7 +16,7 @@ Tour.init(
       allowNull: false,
     },
     location: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: false,
     },
     description: {
