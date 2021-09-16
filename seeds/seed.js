@@ -1,8 +1,10 @@
 const sequelize = require('../config/connection');
-const { User, Tour } = require('../models');
+const { User, Tour, Album } = require('../models');
 
 const userData = require('./userData.json');
 const tourData = require('./tourData.json');
+const albumData = require('./albumData.json');
+
 
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
@@ -19,6 +21,12 @@ const seedDatabase = async () => {
     });
   }
 
+  for (const album of albumData) {
+    await Album.create({
+      ...album,
+      user_id: users[Math.floor(Math.random() * users.length)].id,
+    });
+  }
   process.exit(0);
 };
 
