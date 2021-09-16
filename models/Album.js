@@ -19,7 +19,6 @@ Album.init(
       type: DataTypes.DATE,
       allowNull: false,
     },
-    
     description: {
       type: DataTypes.STRING,
     },
