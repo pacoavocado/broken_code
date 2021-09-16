@@ -16,6 +16,28 @@ router.post('/', async (req, res) => {
   }
 });
 
+// router.delete('/:id', withAuth, async (req, res) => {
+//   try {
+//     const userData = await User.destroy({
+//       where: {
+//         id: req.params.id,
+//         user_id: req.session.user_id,
+//       },
+//     });
+
+//     if (!tourData) {
+//       res.status(404).json({ message: 'No show user with this id!' });
+//       return;
+//     }
+
+//     res.status(200).json(userData);
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
+
+
+
 router.post('/login', async (req, res) => {
   try {
     const userData = await User.findOne({ where: { email: req.body.email } });
