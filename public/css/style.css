@@ -117,3 +117,6 @@ body { font-family: sans-serif; }
 .flickity-prev-next-button:disabled {
   display: none;
 }
+.flickity-page-dots {
+  display:none;
+}
