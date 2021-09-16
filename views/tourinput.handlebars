@@ -6,7 +6,7 @@
 <div>
   <a href='/signup'>/Create New Admin</a>
   <a href="/tourinput">/Create New Show</a>
-  <a href="/albumninput">/Create New Album</a>
+  <a href="/albuminput">/Create New Album</a>
 </div>
   <button type="submit" class="btn btn-primary" href="/albuminput">Create Album</button>
 
@@ -43,7 +43,7 @@
       {{#each tours as |tour|}}
         <div class='row mb-2'>
           <div class='col-md-8'>
-            <h4><a href='/tour/{{tour.id}}'>{{tour.name}}</a></h4>
+            <h4><a href='/tour/{{tour.id}}'>{{tour.venue}}</a></h4>
           </div>
           <div class='col-md-4'>
             <button
