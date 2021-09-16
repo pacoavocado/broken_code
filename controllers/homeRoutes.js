@@ -89,16 +89,6 @@ router.get('/discography', (req, res) => {
   res.render('discography');
 });
 
-// router.get('/tour', (req, res) => {
-//   // If the user is already logged in, redirect the request to another route
-//   if (req.session.logged_in) {
-//     res.redirect('/');
-//     return;
-//   }
-
-//   res.render('tour');
-// });
-
 router.get('/tour', async (req, res) => {
   try {
     // Get all blogs and JOIN with user data
@@ -106,7 +96,6 @@ router.get('/tour', async (req, res) => {
 
     // Serialize data so the template can read it
     const tours = tourData.map((tour) => tour.get({ plain: true }));
-console.log(tours);
     // Pass serialized data and session flag into template
     res.render('tour', { 
       tours, 
