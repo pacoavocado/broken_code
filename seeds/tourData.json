@@ -2,25 +2,25 @@
   {
     "venue": "The Cool Cat Club",
     "location": "Flagstaff, Arizona",
-    "description": "opening for Smashmouth",
+    "description": "opening for SmashFace",
     "show_date": "10/24/21"
   },
   {
     "venue": "Cellar Door",
     "location": "Pretoria, Arizona",
-    "description": "opening for Hobastank",
+    "description": "opening for Hobostank",
     "show_date": "10/29/21"
   },
   {
     "venue": "Rad Boys Room",
     "location": "Bunson, Colorado",
-    "description": "opening for Godsmack",
+    "description": "opening for Goatsmack",
     "show_date": "11/09/21"
   },
   {
     "venue": "Macs",
     "location": "Denver, Colorado",
-    "description": "opening for Blues Traveller",
+    "description": "opening for Bloos Traveller",
     "show_date": "11/16/21"
   }
 ]
