@@ -17,7 +17,8 @@ const newTourFormHandler = async (event) => {
       });
   
       if (response.ok) {
-        document.location.replace('/profile');
+        document.location.replace('/tour');
+        document.location.replace('/tourinput');
       } else {
         alert('Failed to create tour');
       }
@@ -33,7 +34,7 @@ const newTourFormHandler = async (event) => {
       });
   
       if (response.ok) {
-        document.location.replace('/tour');
+        document.location.replace('/tourinput');
       } else {
         alert('Failed to delete tour');
       }
@@ -46,5 +47,5 @@ const newTourFormHandler = async (event) => {
   .addEventListener('submit', newTourFormHandler);
 
   document
-  .querySelector('.project-list')
+  .querySelector('.tour-list')
   .addEventListener('click', delTourButtonHandler);

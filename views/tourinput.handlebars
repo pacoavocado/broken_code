@@ -36,19 +36,19 @@
       </div>
     </form>
     
-  {{#if projects.length}}
-    <div class='col-md-6 project-list'>
-      <h3>Current Projects:</h3>
+  {{#if tours.length}}
+    <div class='col-md-6 tour-list'>
+      <h3>Listed Tours:</h3>
 
-      {{#each projects as |project|}}
+      {{#each tours as |tour|}}
         <div class='row mb-2'>
           <div class='col-md-8'>
-            <h4><a href='/project/{{project.id}}'>{{project.name}}</a></h4>
+            <h4><a href='/tour/{{tour.id}}'>{{tour.name}}</a></h4>
           </div>
           <div class='col-md-4'>
             <button
               class='btn btn-sm btn-danger'
-              data-id='{{project.id}}'
+              data-id='{{tour.id}}'
             >DELETE</button>
           </div>
         </div>

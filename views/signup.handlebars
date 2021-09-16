@@ -20,6 +20,26 @@
             </div>
             <a href="/login">/Back to the Login</a>
         </form>
+
+          {{#if users.length}}
+    <div class='col-md-6 user-list'>
+      <h3>Deleta a User:</h3>
+
+      {{#each users as |user|}}
+        <div class='row mb-2'>
+          <div class='col-md-8'>
+            <h4><a href='/user/{{user.id}}'>{{user.name}}</a></h4>
+          </div>
+          <div class='col-md-4'>
+            <button
+              class='btn btn-sm btn-danger'
+              data-id='{{user.id}}'
+            >DELETE</button>
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  {{/if}}
     </div>
 </div>
 

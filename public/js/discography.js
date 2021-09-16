@@ -16,6 +16,7 @@ const newAlbumHandler = async (event) => {
   
       if (response.ok) {
         document.location.replace('/discography');
+        document.location.replace('/albuminput');
       } else {
         alert('Failed to create tour');
       }
@@ -31,7 +32,7 @@ const newAlbumHandler = async (event) => {
       });
   
       if (response.ok) {
-        document.location.replace('/discogrphy');
+        document.location.replace('/albuminput');
       } else {
         alert('Failed to delete tour');
       }
@@ -43,6 +44,6 @@ const newAlbumHandler = async (event) => {
   .addEventListener('submit', newAlbumHandler);
 
   document
-  .querySelector('.new-album-form')
+  .querySelector('.album-list')
   .addEventListener('submit', delAlbumButtonHandler);
   
