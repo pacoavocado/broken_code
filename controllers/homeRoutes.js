@@ -106,7 +106,15 @@ router.get('/discography', async (req, res) => {
   }
 });
 
+router.get('/albuminput', (req, res) => {
+  // If the user is already logged in, redirect the request to another route
+  if (req.session.logged_in) {
+    res.render('albuminput');
+    return;
+  }
 
+  res.render('/');
+});
 
 router.get('/tour', async (req, res) => {
   try {
@@ -125,20 +133,38 @@ router.get('/tour', async (req, res) => {
   }
 });
 
+
+// router.get('/tourinput', async (req, res) => {
+//   try {
+//     // Get all blogs and JOIN with user data
+//     const tourData = await Tour.findAll();
+
+//     // Serialize data so the template can read it
+//     const tours = tourData.map((tour) => tour.get({ plain: true }));
+//     // Pass serialized data and session flag into template
+//     res.render('tourinput', { 
+//       tours, 
+      
+//     });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
+
 router.get('/tourinput', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
-    res.redirect('/');
+    res.render('tourinput');
     return;
   }
 
-  res.render('tourinput');
+  res.render('/');
 });
 
 router.get('/gallery', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
-    res.redirect('/');
+    res.render('gallery');
     return;
   }
 
@@ -148,7 +174,7 @@ router.get('/gallery', (req, res) => {
 router.get('/faq', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
-    res.redirect('/');
+    res.render('faq');
     return;
   }
 
@@ -158,10 +184,10 @@ router.get('/faq', (req, res) => {
 router.get('/signup', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
-    res.redirect('/profile');
+    res.render('signup');
     return;
   }
 
-  res.render('signup');
+  res.render('/');
 });
 module.exports = router;

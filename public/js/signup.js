@@ -19,7 +19,28 @@ const signupFormHandler = async (event) => {
       }
     }
   };
+
+  const delUserButtonHandler = async (event) => {
+    if (event.target.hasAttribute('data-id')) {
+      const id = event.target.getAttribute('data-id');
+  
+      const response = await fetch(`/api/users/${id}`, {
+        method: 'DELETE',
+      });
+  
+      if (response.ok) {
+        document.location.replace('/signup');
+      } else {
+        alert('Failed to delete user');
+      }
+    }
+  };
+  
   
   document
   .querySelector('.signup-form')
   .addEventListener('submit', signupFormHandler);
+ 
+  document
+  .querySelector('.user-list')
+  .addEventListener('submit', delUserButtonHandler);
