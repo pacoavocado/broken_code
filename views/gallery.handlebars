@@ -1,13 +1,26 @@
 <div class="text-center">
   <h2>Gallery</h2>
-  {{#each slides as |slide|}}
    <div class="carousel js-flickity">
         <!-- images from unsplash.com -->
         <div class="carousel-cell">
-          <img src="{{source}}" alt="{{name}}" />
-          <span class = "imgDesc">{{description}}</span>
+          <img src="../public/image/alone.jpg" alt="alone" />
+        </div>
+         <div class="carousel-cell">
+          <img src="../public/image/cassette.jpg" alt="casette" />
+        </div>
+         <div class="carousel-cell">
+          <img src="../public/image/delorean.jpg" alt="car" />
+        </div>
+         <div class="carousel-cell">
+          <img src="../public/image/medusa.jpg" alt="medusa" />
+        </div>
+         <div class="carousel-cell">
+          <img src="../public/image/starwars.jpg" alt="spacey" />
+        </div>
+         <div class="carousel-cell">
+          <img src="../public/image/windows95.jpg" alt="win95" />
         </div>
   </div>
-{{/each}}  
+
 </div>
-<script src="./js/gallery.js"></script>
+{{!-- <script src="./js/gallery.js"></script> --}}
