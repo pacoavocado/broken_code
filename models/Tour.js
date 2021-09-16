@@ -27,10 +27,10 @@ Tour.init(
       allowNull: false,
       defaultValue: DataTypes.NOW,
     },
-    tour_id: {
+    user_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'tour',
+        model: 'user',
         key: 'id',
       },
     },

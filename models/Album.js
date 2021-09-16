@@ -19,14 +19,13 @@ Album.init(
       type: DataTypes.DATE,
       allowNull: false,
     },
-    
     description: {
       type: DataTypes.STRING,
     },
-    album_id: {
+    user_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'album',
+        model: 'user',
         key: 'id',
       },
     },
@@ -39,3 +38,5 @@ Album.init(
     modelName: 'album',
   }
 );
+
+module.exports = Album;
