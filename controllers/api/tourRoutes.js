@@ -25,7 +25,7 @@ router.delete('/:id', withAuth, async (req, res) => {
     });
 
     if (!tourData) {
-      res.status(404).json({ message: 'No tour found with this id!' });
+      res.status(404).json({ message: 'No show found with this id!' });
       return;
     }
 

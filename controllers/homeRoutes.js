@@ -18,9 +18,9 @@ router.get('/', async (req, res) => {
     const albums = tourData.map((album) => album.get({ plain: true }));
 
     // Pass serialized data and session flag into template
-    res.render('homepage', { 
-      albums, 
-      logged_in: req.session.logged_in 
+    res.render('homepage', {
+      albums,
+      logged_in: req.session.logged_in,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -42,7 +42,7 @@ router.get('/album/:id', async (req, res) => {
 
     res.render('album', {
       ...album,
-      logged_in: req.session.logged_in
+      logged_in: req.session.logged_in,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -62,7 +62,7 @@ router.get('/profile', withAuth, async (req, res) => {
 
     res.render('profile', {
       ...user,
-      logged_in: true
+      logged_in: true,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -72,48 +72,21 @@ router.get('/profile', withAuth, async (req, res) => {
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
-    res.redirect('/profile');
+    res.redirect('/signup');
     return;
   }
 
   res.render('login');
 });
 
-// router.get('/discography', (req, res) => {
-//   // If the user is already logged in, redirect the request to another route
-//   if (req.session.logged_in) {
-//     res.redirect('/');
-//     return;
-//   }
-
-//   res.render('discography');
-// });
-
-router.get('/discography', async (req, res) => {
-  try {
-    // Get all blogs and JOIN with user data
-    const albumData = await Album.findAll();
-
-    // Serialize data so the template can read it
-    const albums = albumData.map((album) => album.get({ plain: true }));
-    // Pass serialized data and session flag into template
-    res.render('discography', { 
-      albums, 
-      
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
-router.get('/albuminput', (req, res) => {
+router.get('/discography', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
-    res.render('albuminput');
+    res.render('discography');
     return;
   }
 
-  res.render('/');
+  res.render('discography');
 });
 
 router.get('/tour', async (req, res) => {
@@ -124,15 +97,13 @@ router.get('/tour', async (req, res) => {
     // Serialize data so the template can read it
     const tours = tourData.map((tour) => tour.get({ plain: true }));
     // Pass serialized data and session flag into template
-    res.render('tour', { 
-      tours, 
-      
+    res.render('tour', {
+      tours,
     });
   } catch (err) {
     res.status(500).json(err);
   }
 });
-
 
 // router.get('/tourinput', async (req, res) => {
 //   try {
@@ -142,9 +113,9 @@ router.get('/tour', async (req, res) => {
 //     // Serialize data so the template can read it
 //     const tours = tourData.map((tour) => tour.get({ plain: true }));
 //     // Pass serialized data and session flag into template
-//     res.render('tourinput', { 
-//       tours, 
-      
+//     res.render('tourinput', {
+//       tours,
+
 //     });
 //   } catch (err) {
 //     res.status(500).json(err);
@@ -155,6 +126,16 @@ router.get('/tourinput', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
     res.render('tourinput');
+    return;
+  }
+
+  res.render('/');
+});
+
+router.get('/albuminput', (req, res) => {
+  // If the user is already logged in, redirect the request to another route
+  if (req.session.logged_in) {
+    res.render('albuminput');
     return;
   }
 
