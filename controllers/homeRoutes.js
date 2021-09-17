@@ -4,8 +4,20 @@ const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
   try {
+  
+    res.render('homepage', {
+      
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/albuminput', async (req, res) => {
+  try {
     // Get all albums and JOIN with user data
-    const tourData = await Album.findAll({
+    const albumData = await Album.findAll({
       include: [
         {
           model: User,
@@ -15,10 +27,10 @@ router.get('/', async (req, res) => {
     });
 
     // Serialize data so the template can read it
-    const albums = tourData.map((album) => album.get({ plain: true }));
+    const albums = albumData.map((album) => album.get({ plain: true }));
 
     // Pass serialized data and session flag into template
-    res.render('homepage', {
+    res.render('albuminput', {
       albums,
       logged_in: req.session.logged_in,
     });
@@ -29,25 +41,47 @@ router.get('/', async (req, res) => {
 
 router.get('/album/:id', async (req, res) => {
   try {
-    const tourData = await album.findByPk(req.params.id, {
-      include: [
-        {
-          model: User,
-          attributes: ['name'],
-        },
-      ],
+    const albumData = await Album.findByPk(req.params.id, {
+      // include: [
+      //   {
+      //     model: User,
+      //     attributes: ['name'],
+      //   },
+      // ],
     });
 
-    const album = tourData.get({ plain: true });
-
+    // const album = albumData.get({ plain: true });
+    const album = albumData.map((album) => album.get({ plain: true }));
     res.render('album', {
       ...album,
-      logged_in: req.session.logged_in,
+      // logged_in: req.session.logged_in,
     });
   } catch (err) {
     res.status(500).json(err);
   }
 });
+// router.get('/project/:id', async (req, res) => {
+//   try {
+//     const projectData = await Project.findByPk(req.params.id, {
+//       include: [
+//         {
+//           model: User,
+//           attributes: ['name'],
+//         },
+//       ],
+//     });
+
+//     const project = projectData.get({ plain: true });
+
+//     res.render('project', {
+//       ...project,
+//       logged_in: req.session.logged_in
+//     });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
+
 
 // Use withAuth middleware to prevent access to route
 router.get('/profile', withAuth, async (req, res) => {
@@ -121,42 +155,54 @@ router.get('/discography', async (req, res) => {
   }
 });
 
-// router.get('/tourinput', async (req, res) => {
-//   try {
-//     // Get all blogs and JOIN with user data
-//     const tourData = await Tour.findAll();
+router.get('/signup', async (req, res) => {
+  try {
+    // Get all blogs and JOIN with user data
+    const userData = await User.findAll();
 
-//     // Serialize data so the template can read it
-//     const tours = tourData.map((tour) => tour.get({ plain: true }));
-//     // Pass serialized data and session flag into template
-//     res.render('tourinput', {
-//       tours,
+    // Serialize data so the template can read it
+    const users = userData.map((user) => user.get({ plain: true }));
+    // Pass serialized data and session flag into template
+    res.render('signup', {
+      users,
 
-//     });
-//   } catch (err) {
-//     res.status(500).json(err);
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/tourinput', async (req, res) => {
+  // If the user is already logged in, redirect the request to another route
+  try {
+    // Get all blogs and JOIN with user data
+    const tourData = await Tour.findAll();
+
+    // Serialize data so the template can read it
+    const tours = tourData.map((tour) => tour.get({ plain: true }));
+    // Pass serialized data and session flag into template
+    res.render('tourinput', {
+      tours,
+
+    });
+  } catch (err) {
+    res.status(500).json(err);
+}});
+
+// router.get('/albuminput', (req, res) => {
+//   // If the user is already logged in, redirect the request to another route
+//   if (req.session.logged_in) {
+//     res.render('albuminput');
+//     return;
 //   }
+//   const album = albumData.get({ plain: true });
+
+//   res.render('albuminput', {
+//     ...album,
+//     logged_in: req.session.logged_in,
+//   });
+//   res.render('/');
 // });
-
-router.get('/tourinput', (req, res) => {
-  // If the user is already logged in, redirect the request to another route
-  if (req.session.logged_in) {
-    res.render('tourinput');
-    return;
-  }
-
-  res.render('/');
-});
-
-router.get('/albuminput', (req, res) => {
-  // If the user is already logged in, redirect the request to another route
-  if (req.session.logged_in) {
-    res.render('albuminput');
-    return;
-  }
-
-  res.render('/');
-});
 
 router.get('/gallery', (req, res) => {
   // If the user is already logged in, redirect the request to another route
@@ -185,6 +231,12 @@ router.get('/signup', (req, res) => {
     return;
   }
 
+  const user = userData.get({ plain: true });
+
+  res.render('user', {
+    ...user,
+    logged_in: req.session.logged_in,
+  });
   res.render('/');
 });
 module.exports = router;
