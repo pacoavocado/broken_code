@@ -3,14 +3,16 @@ const { Album } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.post('/', withAuth, async (req, res) => {
+
   try {
-    const newalbum = await Album.create({
+    const newAlbum = await Album.create({
       ...req.body,
       user_id: req.session.user_id,
     });
 
     res.status(200).json(newAlbum);
   } catch (err) {
+    console.log(err)
     res.status(400).json(err);
   }
 });

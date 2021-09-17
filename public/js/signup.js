@@ -13,7 +13,7 @@ const signupFormHandler = async (event) => {
       });
   
       if (response.ok) {
-        document.location.replace('/dashboard');
+        document.location.replace('/signup');
       } else {
         alert(response.statusText);
       }
@@ -21,6 +21,7 @@ const signupFormHandler = async (event) => {
   };
 
   const delUserButtonHandler = async (event) => {
+    console.log('yo')
     if (event.target.hasAttribute('data-id')) {
       const id = event.target.getAttribute('data-id');
   

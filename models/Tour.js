@@ -23,7 +23,7 @@ Tour.init(
       type: DataTypes.STRING,
     },
     show_date: {
-      type: DataTypes.STRING,
+      type: DataTypes.DATE,
       allowNull: false,
 
     },

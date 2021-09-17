@@ -9,13 +9,13 @@
       "album_name": "Yellow Door",
       "description": "It's Yellow so umm yeah...",
       "release_date": "09/02/20",
-      "user_id" : 3
+      "user_id" : 1
     },
     {
       "album_name": "Leash on a Dog",
       "description": "Dog's need leashes sometimes",
       "release_date": "03/21/21",
-      "user_id" : 2
+      "user_id" : 1
     },
     {
       "album_name": "Fall of Society",

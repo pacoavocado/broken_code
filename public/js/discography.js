@@ -1,14 +1,14 @@
 const newAlbumHandler = async (event) => {
     event.preventDefault();
   
-    const album = document.querySelector('#album-name').value.trim();
+    const album_name = document.querySelector('#album-name').value.trim();
     const date = document.querySelector('#release-date').value.trim();
     const description = document.querySelector('#release-desc').value.trim();
   
-    if (album && date && description) {
+    if (album_name && date && description) {
       const response = await fetch(`/api/albums`, {
         method: 'POST',
-        body: JSON.stringify({ album, date, description }),
+        body: JSON.stringify({ album_name , release_date: date, description }),
         headers: {
           'Content-Type': 'application/json',
         },

@@ -12,49 +12,50 @@
 
 <div class="row mt-4">
   <div class="col-md-6">
-    <h3>Create a New Show:</h3
+    <h3>Create a New Show:</h3>
 
     <form class="form new-tour-form">
       <div class="form-group">
-        <label for="venue-name">venue name:</label>
-        <input class="form-input" type="text" id="venue-name" name="venue-name" />
-      </div>
-        <label for="location">Location: (city, state)</label>
-        <input class="form-input" type="text" id="location" name="location" />
-      </div>
-      <div class="form-group">
-        <label for="tour-desc">description:</label>
-        <textarea class="form-input" id="release-desc" name="release-desc"></textarea>
-      </div>
-      <div class="form-group">
-        <label for="show-date">Show Date:</label>
-        <input class="form-input" type="date" id="show-date" name="show-date" />
-      </div>
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary">Create Show</button>
-      </div>
-    </form>
-  {{!-- <button type="submit" class="btn btn-primary" href="/albuminput">Create Show</button> --}}
-    
-  {{#if tours.length}}
-    <div class='col-md-6 tour-list'>
-      <h3>Listed Tours:</h3>
-
-      {{#each tours as |tour|}}
-        <div class='row mb-2'>
-          <div class='col-md-8'>
-            <h4><a href='/tour/{{tour.id}}'>{{tour.venue}}</a></h4>
-          </div>
-          <div class='col-md-4'>
-            <button
-              class='btn btn-sm btn-danger'
-              data-id='{{tour.id}}'
-            >DELETE</button>
-          </div>
+          <label for="venue-name">venue name:</label>
+          <input class="form-input" type="text" id="venue-name" name="venue-name" />
         </div>
-      {{/each}}
-    </div>
-  {{/if}}
+          <label for="location">Location: (city, state)</label>
+          <input class="form-input" type="text" id="location" name="location" />
+        </div>
+        <div class="form-group">
+          <label for="tour-desc">description:</label>
+          <input class="form-input" id="release-desc" name="release-desc"></input>
+        </div>
+        <div class="form-group">
+          <label for="show-date">Show Date:</label>
+          <input class="form-input" type="date" id="show-date" name="show-date" />
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Create Show</button>
+        </div>
+      </form>
+    {{!-- <button type="submit" class="btn btn-primary" href="/albuminput">Create Show</button> --}}
+      
+    {{#if tours.length}}
+      <div class='col-md-6 tour-list'>
+        <h3>Listed Tours:</h3>
+
+        {{#each tours as |tour|}}
+          <div class='row mb-2'>
+            <div class='col-md-8'>
+              <h4>{{tour.venue}}</h4>
+            </div>
+            <div class='col-md-4'>
+              <button
+                class='btn btn-sm btn-danger'
+                data-id='{{tour.id}}'
+              >DELETE</button>
+            </div>
+          </div>
+        {{/each}}
+      </div>
+    {{/if}}
+  </div>
 </div>
  
 

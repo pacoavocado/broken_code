@@ -22,11 +22,11 @@
       </div>
       <div class="form-group">
         <label for="release-date">Release Date:</label>
-        <input class="form-input" type="date" id="release-date"" name="release-date"" />
+        <input class="form-input" type="date" id="release-date" name="release-date" />
       </div>
       <div class="form-group">
         <label for="album-desc">description:</label>
-        <textarea class="form-input" id="release-desc" name="release-desc"></textarea>
+        <input class="form-input" id="release-desc" name="release-desc"></input>
       </div>
       <div class="form-group">
         <button type="submit" class="btn btn-primary">Create Album Release:</button>
@@ -40,7 +40,7 @@
       {{#each albums as |album|}}
         <div class='row mb-2'>
           <div class='col-md-8'>
-            <h4><a href='/album/{{album.id}}'>{{album.album_name}}</a></h4>
+            <h4>{{album.album_name}}</h4>
           </div>
           <div class='col-md-4'>
             <button
@@ -54,4 +54,4 @@
   {{/if}}
 </div>
 
-  <script src="./js/discography.js"></script>
+<script src="./js/discography.js"></script>

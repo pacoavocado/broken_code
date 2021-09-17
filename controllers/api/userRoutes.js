@@ -62,7 +62,7 @@ router.post('/logout', (req, res) => {
   }
 });
 
-router.delete('/:id', withAuth, async (req, res) => {
+router.delete('/signup/:id', withAuth, async (req, res) => {
   try {
     const userData = await User.destroy({
       where: {
@@ -71,8 +71,8 @@ router.delete('/:id', withAuth, async (req, res) => {
       },
     });
 
-    if (!tourData) {
-      res.status(404).json({ message: 'No show user with this id!' });
+    if (!userData) {
+      res.status(404).json({ message: 'No user with this id!' });
       return;
     }
 

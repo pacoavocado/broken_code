@@ -16,7 +16,7 @@ Album.init(
       allowNull: false,
     },
     release_date: {
-      type: DataTypes.STRING,
+      type: DataTypes.DATE,
       allowNull: false,
     },
     description: {
