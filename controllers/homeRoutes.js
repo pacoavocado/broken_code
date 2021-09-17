@@ -79,15 +79,15 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
-router.get('/discography', (req, res) => {
-  // If the user is already logged in, redirect the request to another route
-  if (req.session.logged_in) {
-    res.render('discography');
-    return;
-  }
+// router.get('/discography', (req, res) => {
+//   // If the user is already logged in, redirect the request to another route
+//   if (req.session.logged_in) {
+//     res.render('discography');
+//     return;
+//   }
 
-  res.render('discography');
-});
+//   res.render('discography');
+// });
 
 router.get('/tour', async (req, res) => {
   try {
@@ -99,6 +99,22 @@ router.get('/tour', async (req, res) => {
     // Pass serialized data and session flag into template
     res.render('tour', {
       tours,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/discography', async (req, res) => {
+  try {
+    // Get all blogs and JOIN with user data
+    const albumData = await Album.findAll();
+
+    // Serialize data so the template can read it
+    const albums = albumData.map((album) => album.get({ plain: true }));
+    // Pass serialized data and session flag into template
+    res.render('discography', {
+      albums,
     });
   } catch (err) {
     res.status(500).json(err);
