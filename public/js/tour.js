@@ -4,7 +4,7 @@ const newFormHandler = async (event) => {
     const venue = document.querySelector('#venue-name').value.trim();
     const location = document.querySelector('#location').value.trim();
     const description = document.querySelector('#release-desc').value.trim();
-    const date = document.querySelector('show_date').value.trim();
+    const date = document.querySelector('#show_date').value.trim();
   console.log(show_date)
     if (venue && location && description && date) {
       const response = await fetch(`/api/tours`, {
@@ -17,7 +17,7 @@ const newFormHandler = async (event) => {
       });
   
       if (response.ok) {
-        document.location.replace('/tour');
+        // document.location.replace('/tour');
         document.location.replace('/tourinput');
       } else {
         alert('Failed to create tour');
