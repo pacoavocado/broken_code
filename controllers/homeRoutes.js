@@ -11,10 +11,11 @@ router.get('/', async (req, res) => {
     });
   } catch (err) {
     res.status(500).json(err);
+    
   }
 });
 
-router.get('/albuminput', async (req, res) => {
+router.get('/album', async (req, res) => {
   try {
     // Get all albums and JOIN with user data
     const albumData = await Album.findAll({
@@ -30,12 +31,14 @@ router.get('/albuminput', async (req, res) => {
     const albums = albumData.map((album) => album.get({ plain: true }));
 
     // Pass serialized data and session flag into template
-    res.render('albuminput', {
+    res.render('album', {
+      
       albums,
-      logged_in: req.session.logged_in,
+      // logged_in: req.session.logged_in,
     });
   } catch (err) {
     res.status(500).json(err);
+    console.log(err)
   }
 });
 
@@ -84,24 +87,24 @@ router.get('/album/:id', async (req, res) => {
 
 
 // Use withAuth middleware to prevent access to route
-router.get('/profile', withAuth, async (req, res) => {
-  try {
-    // Find the logged in user based on the session ID
-    const userData = await User.findByPk(req.session.user_id, {
-      attributes: { exclude: ['password'] },
-      include: [{ model: Album }],
-    });
+// router.get('/profile', withAuth, async (req, res) => {
+//   try {
+//     // Find the logged in user based on the session ID
+//     const userData = await User.findByPk(req.session.user_id, {
+//       attributes: { exclude: ['password'] },
+//       include: [{ model: Album }],
+//     });
 
-    const user = userData.get({ plain: true });
+//     const user = userData.get({ plain: true });
 
-    res.render('profile', {
-      ...user,
-      logged_in: true,
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+//     res.render('profile', {
+//       ...user,
+//       logged_in: true,
+//     });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
@@ -183,6 +186,23 @@ router.get('/tourinput', async (req, res) => {
     // Pass serialized data and session flag into template
     res.render('tourinput', {
       tours,
+
+    });
+  } catch (err) {
+    res.status(500).json(err);
+}});
+
+router.get('/albuminput', async (req, res) => {
+  // If the user is already logged in, redirect the request to another route
+  try {
+    // Get all blogs and JOIN with user data
+    const albumData = await Album.findAll();
+
+    // Serialize data so the template can read it
+    const albums = albumData.map((album) => album.get({ plain: true }));
+    // Pass serialized data and session flag into template
+    res.render('albuminput', {
+      albums,
 
     });
   } catch (err) {
