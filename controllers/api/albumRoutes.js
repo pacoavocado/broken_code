@@ -22,17 +22,19 @@ router.delete('/:id', withAuth, async (req, res) => {
     const albumData = await Album.destroy({
       where: {
         id: req.params.id,
-        user_id: req.session.user_id,
+        // user_id: req.session.user_id,
       },
     });
 
     if (!albumData) {
       res.status(404).json({ message: 'No album found with this id!' });
+      console.log(!albumData, "nope")
       return;
     }
 
     res.status(200).json(albumData);
   } catch (err) {
+    console.log(err)
     res.status(500).json(err);
   }
 });

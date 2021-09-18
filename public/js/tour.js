@@ -35,6 +35,8 @@ const newFormHandler = async (event) => {
   
       if (response.ok) {
         document.location.replace('/tourinput');
+        // document.location.replace('/tour');
+
       } else {
         alert('Failed to delete tour');
       }
