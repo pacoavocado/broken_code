@@ -23,7 +23,7 @@ const newAlbumHandler = async (event) => {
     }
   };
   
-  const delAlbumButtonHandler = async (event) => {
+  const delButtonHandler = async (event) => {
     if (event.target.hasAttribute('data-id')) {
       const id = event.target.getAttribute('data-id');
   
@@ -45,5 +45,5 @@ const newAlbumHandler = async (event) => {
 
   document
   .querySelector('.album-list')
-  .addEventListener('submit', delAlbumButtonHandler);
+  .addEventListener('submit', delButtonHandler);
   

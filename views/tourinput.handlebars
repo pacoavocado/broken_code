@@ -15,35 +15,36 @@
     <h3>Create a New Show:</h3>
 
     <form class="form new-tour-form">
-      <div class="form-group">
+        <div class="form-group">
           <label for="venue-name">venue name:</label>
           <input class="form-input" type="text" id="venue-name" name="venue-name" />
         </div>
+        <div class="form-group">
           <label for="location">Location: (city, state)</label>
           <input class="form-input" type="text" id="location" name="location" />
         </div>
         <div class="form-group">
           <label for="tour-desc">description:</label>
-          <input class="form-input" id="release-desc" name="release-desc"></input>
+          <input class="form-input" type="text" id="release-desc" name="release-desc" />
         </div>
         <div class="form-group">
           <label for="show-date">Show Date:</label>
           <input class="form-input" type="date" id="show-date" name="show-date" />
         </div>
         <div class="form-group">
-          <button type="submit" class="btn btn-primary">Create Show</button>
+          <button type="submit" class="btn btn-primary">Create New Show</button>
         </div>
-      </form>
-    {{!-- <button type="submit" class="btn btn-primary" href="/albuminput">Create Show</button> --}}
+    </form>
       
     {{#if tours.length}}
       <div class='col-md-6 tour-list'>
-        <h3>Listed Tours:</h3>
+        <h3>Listed Shows:</h3>
 
         {{#each tours as |tour|}}
           <div class='row mb-2'>
             <div class='col-md-8'>
               <h4>{{tour.venue}}</h4>
+              <h4>{{format_date show_date}}</h4>
             </div>
             <div class='col-md-4'>
               <button
