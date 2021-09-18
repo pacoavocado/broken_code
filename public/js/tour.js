@@ -1,12 +1,12 @@
 const newFormHandler = async (event) => {
     event.preventDefault();
+  
     const venue = document.querySelector('#venue-name').value.trim();
     const location = document.querySelector('#location').value.trim();
     const description = document.querySelector('#release-desc').value.trim();
     const date = document.querySelector('#show_date').value.trim();
-
+  console.log(show_date)
     if (venue && location && description && date) {
-
       const response = await fetch(`/api/tours`, {
         method: 'POST',
         body: JSON.stringify({ venue, location, description, show_date: date }),

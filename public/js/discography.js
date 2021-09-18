@@ -15,7 +15,8 @@ const newAlbumHandler = async (event) => {
       });
   
       if (response.ok) {
-        document.location.replace('/discography');
+        console.log("good job");
+        // document.location.replace('/discography');
         document.location.replace('/albuminput');
       } else {
         alert('Failed to create album');
