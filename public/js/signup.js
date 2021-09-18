@@ -42,6 +42,11 @@ const signupFormHandler = async (event) => {
   .querySelector('.signup-form')
   .addEventListener('submit', signupFormHandler);
  
-  document
-  .querySelector('.user-list')
-  .addEventListener('submit', delUserButtonHandler);
+ let deleteButton = document
+  .querySelectorAll('.user-list');
+  if (deleteButton){
+    deleteButton.forEach(el => {
+      
+      el.addEventListener('click', delUserButtonHandler);
+    });
+  }

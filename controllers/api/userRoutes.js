@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { User } = require('../../models');
-const withAuth = require('../../utils/auth');
+// const withAuth = require('../../utils/auth');
 
 router.post('/', async (req, res) => {
   try {
@@ -62,22 +62,24 @@ router.post('/logout', (req, res) => {
   }
 });
 
-router.delete('/signup/:id', withAuth, async (req, res) => {
+router.delete('/:id', async (req, res) => {
   try {
     const userData = await User.destroy({
       where: {
         id: req.params.id,
-        user_id: req.session.user_id,
+      
       },
     });
 
     if (!userData) {
       res.status(404).json({ message: 'No user with this id!' });
+      console.log("yuppppppp")
       return;
     }
 
     res.status(200).json(userData);
   } catch (err) {
+    console.log(err)
     res.status(500).json(err);
   }
 });
