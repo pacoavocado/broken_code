@@ -25,6 +25,7 @@ const newAlbumHandler = async (event) => {
   };
   
   const delButtonHandler = async (event) => {
+    console.log("I fired");
     if (event.target.hasAttribute('data-id')) {
       const id = event.target.getAttribute('data-id');
   
@@ -43,8 +44,15 @@ const newAlbumHandler = async (event) => {
   document
   .querySelector('.new-album-form')
   .addEventListener('submit', newAlbumHandler);
+ 
+  let deleteButton = document
+  .querySelectorAll('.album-list');
+  if (deleteButton){
+    deleteButton.forEach(el => {
+      
+      el.addEventListener('click', delButtonHandler);
+    });
+  }
 
-  document
-  .querySelector('.album-list')
-  .addEventListener('submit', delButtonHandler);
+ 
   
