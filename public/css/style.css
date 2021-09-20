@@ -1,3 +1,29 @@
+:root {
+  --white: #ff0077
+}
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: black;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  padding: 2rem;
+  place-content: center;
+  min-height: 100vh;
+  color: var(--white);
+  text-align: center;
+  font-size: 1.25rem;
+  font-family: "Lucida Console", Courier, monospace;
+}
+
+img {
+size: auto;
+}
+
 header, .project:not(:last-child) {
   border-bottom: 1px solid #ccc;
 }
@@ -7,20 +33,14 @@ header, .project:not(:last-child) {
   border: none;
   padding: 0;
   cursor: pointer;
-  color: #1b89bc;
+  color: #ff0077;
   text-decoration: none;
   font-size: 100%;
 }
 
 .no-button:hover {
-  color: #065b83;
+  color: #aa0047;
   text-decoration: underline;
-}
-
-.dollar-amount {
-  color: #056605;
-  font-weight: bold;
-  margin-left: -5px;
 }
 
 /* full width cells by default */
